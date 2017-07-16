@@ -42,7 +42,7 @@
 			palyGame.onclick=function(){
 				jihuiNum--;
 				palyGame.style.display = "none";
-				var time = 10;
+				var time = 100;
 				var bool = false;
 				
 				var startTime = setInterval(function(){
@@ -52,6 +52,7 @@
 						document.querySelector(".mouse"+j).style.backgroundSize="100% 100%";
 					}
 					if(time<=0){
+						time = 0;
 						endGame();
 						clearInterval(startTime);
 					}
