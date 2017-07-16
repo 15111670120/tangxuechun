@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/打地鼠练习2的.css"/>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//创建一个盒子，装载整个页面
+			var page = document.createElement("div");
+			page.id = "page";
+			page.className = "page";
+			//设计头部
+			var pageTop = document.createElement("div");
+			pageTop.id = "pageTop";
+			pageTop.className = "pageTop";
+			pageTop.innerHTML = "<div class='time'><img src='img/countdown_time.png'/><span>10s</span></div><div class='fx'><img src='img/countdown_share.png'/></div><div class='playGame'><img src='img/game_btn_star.png'/></div><div class='jihui'>你还有<span>3</span>次机会</div>"
+			page.appendChild(pageTop);
+			document.body.appendChild(page);
+			//设计地鼠界面
+			var back = document.createElement("div");
+			back.id = "back";
+			back.className = "back";
+			var str = "";
+			for(var i = 0;i < 12;i ++){
+				str += "<div class='mouse"+i+"'></div>";
+			}
+			back.innerHTML = str;
+			page.appendChild(back);
+			
+			//开始设置打地鼠了
+			var palyGame = document.querySelector(".playGame");
+			var timeSpan = document.querySelector(".time span");
+			var jihuiSpan = document.querySelector(".jihui span");
+
+			var randomNum;
+			var jihuiNum = 3;
+			var score = 0;
+//			console.log(palyGame);
+			palyGame.onclick=function(){
+				jihuiNum--;
+				palyGame.style.display = "none";
+				var time = 10;
+				var bool = false;
+				
+				var startTime = setInterval(function(){
+					for(var j = 0;j < 12;j ++){
+						document.querySelector(".mouse"+j).style.background="url(img/vendor_people00.png) no-repeat center";
+						document.querySelector(".mouse"+j).style.transform="all 1s";
+						document.querySelector(".mouse"+j).style.backgroundSize="100% 100%";
+					}
+					if(time<=0){
+						endGame();
+						clearInterval(startTime);
+					}
+					bool = false;
+					time--;
+					randomNum = parseInt(Math.random()*12);
+					document.querySelector(".mouse"+randomNum).style.background="url(img/vendor_hole01.png) no-repeat center";
+					document.querySelector(".mouse"+randomNum).style.transform="all 1s";
+					document.querySelector(".mouse"+randomNum).style.backgroundSize="100% 100%";
+					timeSpan.innerHTML =time+"s";
+				},200);
+				
+				var clickMouse = function(event){
+					console.log("className"+event.target.className);
+					if(event.target.className=="mouse"+randomNum&&!bool){
+						document.querySelector(".mouse"+randomNum).style.background="url(img/vendor_hole02.png) no-repeat center";
+						document.querySelector(".mouse"+randomNum).style.transform="all 1s";
+						document.querySelector(".mouse"+randomNum).style.backgroundSize="100% 100%";
+						bool = true;
+						score += 100;
+					}
+				}
+				back.addEventListener("click",clickMouse);
+				
+			}
+			//游戏结束
+			var endGame = function(){
+				var end = document.createElement("div");
+				end.id = "end";
+				end.innerHTML = "<img src='img/pop_score_bg.png' /><span>恭喜你得了"+score+"分</span><h1>再来一次</h1>";
+				page.appendChild(end);
+				jihuiSpan.innerHTML = jihuiNum;
+				document.querySelector("#end h1").onclick = function(){
+					location.reload();
+				}
+			}
+			
+//			endGame();
+		</script>
+	</body>
+</html>

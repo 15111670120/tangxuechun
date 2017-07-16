@@ -1,0 +1,112 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body,html{
+	width: 100%;
+	height: 100%;
+}
+.page{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background: url(../img/game_youxi_bg.jpg) no-repeat center;
+	background-size:100% 100% ;
+}
+.pageTop{
+	width: 100%;
+	height: 30%;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+.pageTop .time{
+	width: 30%;
+	height: 20%;
+	position: absolute;
+}
+.pageTop .time img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 10%;
+	top: 20%;
+}
+.pageTop .time span{
+	position: absolute;
+	left: 60%;
+	top: 60%;
+	font-size: 36px;
+	color: orange;
+}
+.pageTop .fx{
+	width: 10%;
+	position: absolute;
+	right: 5%;
+	top: 0%;
+	
+}
+.pageTop .fx img{
+	width: 100%;
+}
+.pageTop .playGame{
+	width: 60%;
+	position: absolute;
+	top: 50%;
+	left: 35%;
+}
+.pageTop .jihui{
+	width: 50%;
+	position: absolute;
+	top: 90%;
+	left: 40%;
+	font-size: 36px;
+}
+.pageTop .jihui span{
+	font-size: 42px;
+	color: blue;
+}
+
+.back{
+	width: 100%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	
+}
+.back div{
+	width: 33%;
+	height: 25%;
+	transition: all 0.5s; 
+	background: url(../img/vendor_people00.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100% 100%;
+	/*z-index: 2;*/
+}
+
+#end img{
+	position: absolute;
+	width: 60%;
+	height: 50%;
+	left: 20%;
+	top: 20%;
+}
+#end span{
+	position: absolute;
+	left: 30%;
+	top: 43%;
+	font-size: 54px;
+	color: goldenrod;
+	text-align: center;
+}
+#end h1{
+	position: absolute;
+	top: 54%;
+	left: 34%;
+	font-size: 81px;
+	color: #FFFF00;
+}
